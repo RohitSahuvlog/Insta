@@ -4,6 +4,7 @@ const app =express()
 const authRouter =require("./Routes/Auth") 
 const userRouter =require("./Routes/user") 
 const cors = require("cors")
+require("dotenv").config()
 app.use("./static",express.static("./uploads"))
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
@@ -12,7 +13,8 @@ app.use("/auth",authRouter)
 app.use("/profile",userRouter)
 
 
-app.listen(8080,async()=>{
+const PORT  =8080
+app.listen(PORT,async()=>{
     try{
         await connection
         console.log(" connection to db")
